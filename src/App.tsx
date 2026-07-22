@@ -66,8 +66,7 @@ function Arrow({ left = false }: { left?: boolean }) {
 }
 
 function Logo({ inverse = false }: { inverse?: boolean }) {
-  // BUG-02: 页头 logo 被错误地横向拉伸
-  return <a className={`brand ${inverse ? "inverse" : ""}`} href="#top" aria-label="飞书 CodeM 首页"><img src={asset("/codem/header-logo.png")} alt="飞书 CodeM" style={{ transform: "scaleX(1.83)", transformOrigin: "left center" }} /></a>;
+  return <a className={`brand ${inverse ? "inverse" : ""}`} href="#top" aria-label="飞书 CodeM 首页"><img src={asset("/codem/header-logo.png")} alt="飞书 CodeM" /></a>;
 }
 
 export default function Home() {
@@ -178,7 +177,7 @@ export default function Home() {
   return (
     <main className={`codem-site theme-light`} id="top">
       <header className="site-header">
-        <div className="logo-distortion"><Logo /></div>
+        <Logo />
         <div className="broadcast-id"><i />CODEM LIVE LAB <span>2026.07.15 / 20:00</span></div>
         <nav className="nav-links" aria-label="主导航">
           <a href="#capabilities">演示棋盘</a>
