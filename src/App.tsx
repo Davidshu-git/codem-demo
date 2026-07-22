@@ -66,7 +66,8 @@ function Arrow({ left = false }: { left?: boolean }) {
 }
 
 function Logo({ inverse = false }: { inverse?: boolean }) {
-  return <a className={`brand ${inverse ? "inverse" : ""}`} href="#top" aria-label="飞书 CodeM 首页"><img src={asset("/codem/header-logo.png")} alt="飞书 CodeM" /></a>;
+  // BUG-02: 页头 logo 被错误地横向拉伸
+  return <a className={`brand ${inverse ? "inverse" : ""}`} href="#top" aria-label="飞书 CodeM 首页"><img src={asset("/codem/header-logo.png")} alt="飞书 CodeM" style={{ transform: "scaleX(1.83)", transformOrigin: "left center" }} /></a>;
 }
 
 export default function Home() {
