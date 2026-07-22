@@ -66,8 +66,8 @@ function Arrow({ left = false }: { left?: boolean }) {
 }
 
 function Logo({ inverse = false }: { inverse?: boolean }) {
-  // BUG-02: 页头 logo 被错误地横向拉伸
-  return <a className={`brand ${inverse ? "inverse" : ""}`} href="#top" aria-label="飞书 CodeM 首页"><img src={asset("/codem/header-logo.png")} alt="飞书 CodeM" style={{ transform: "scaleX(1.83)", transformOrigin: "left center" }} /></a>;
+  // BUG-02 修复：移除错误的 scaleX 横向拉伸
+  return <a className={`brand ${inverse ? "inverse" : ""}`} href="#top" aria-label="飞书 CodeM 首页"><img src={asset("/codem/header-logo.png")} alt="飞书 CodeM" /></a>;
 }
 
 export default function Home() {
@@ -122,10 +122,9 @@ export default function Home() {
   }, [demoRunning]);
 
   const visibleFeature = useMemo(
-    // BUG-01: 数组下标被额外加了 1
-    () => features[(activeFeature + 1) % features.length],
+    () => features[activeFeature % features.length],
     [activeFeature],
-  );
+    );
 
   const startDemo = () => {
     setProgress(0);
