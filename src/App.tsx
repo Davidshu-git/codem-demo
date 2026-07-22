@@ -122,7 +122,8 @@ export default function Home() {
   }, [demoRunning]);
 
   const visibleFeature = useMemo(
-    () => features[activeFeature % features.length],
+    // BUG-01: 数组下标被额外加了 1
+    () => features[(activeFeature + 1) % features.length],
     [activeFeature],
   );
 
